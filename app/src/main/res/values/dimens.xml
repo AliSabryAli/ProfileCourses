@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="txt_size">16dp</dimen>
+    <dimen name="bt_size">18dp</dimen>
+    <dimen name="create">16dp</dimen>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+        <item name="editTextColor">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/lightGray</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textColorHint">@color/lightGray</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/txt_size</item>
+    </style>
+
+    <style name="CreateTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/create</item>
+    </style>
+    <style name="TitleText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20dp</item>
+        <!--<item name="android:background">@color/titleBg</item>-->
+    </style>
+</resources>

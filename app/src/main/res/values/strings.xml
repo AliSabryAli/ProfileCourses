@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProfileCourses</string>
+    <string name="action_settings">Settings</string>
+    <string name="enter_assword">Enter Password</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="log_in">Log In</string>
+    <string name="create">Create Account</string>
+    <string name="create_bt">Create</string>
+    <string name="show">show grid</string>
+</resources>
