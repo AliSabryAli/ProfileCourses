@@ -1,5 +1,6 @@
 package com.ali.profilecourses.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,12 +35,16 @@ public class BoardActivity extends AppCompatActivity {
         courseListAdapter.setOnClickListner(new CourseListAdapter.OnItemClickListner() {
             @Override
             public void onItemClick(View view, int pos) {
-                Toast.makeText(BoardActivity.this, "Cliccked " + (pos + 1), Toast.LENGTH_SHORT).show();
+                startActivity(newIntent(BoardActivity.this, pos));
             }
         });
     }
 
-
+    public Intent newIntent(Context context, int position) {
+        Intent intent = new Intent(context, DetailesActivity.class);
+        intent.putExtra("course_id", position);
+        return intent;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
