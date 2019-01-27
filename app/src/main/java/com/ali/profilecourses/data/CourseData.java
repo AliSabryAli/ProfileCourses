@@ -12,8 +12,8 @@ public class CourseData {
 
     public List<Course> getCoursesList() {
         List<Course> list = new ArrayList<>();
-        for (int i = 0; i < courseNames.length; i++) {
-            Course course = new Course(courseNames[i], courseNames[i].replace(" ", "").toLowerCase(), "item");
+        for (String courseName : courseNames) {
+            Course course = new Course(courseName, courseName.replace(" ", "").toLowerCase(), "item");
             list.add(course);
         }
         return list;

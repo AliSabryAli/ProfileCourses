@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/titleBg"
     android:orientation="vertical"
     android:padding="4dp"
     tools:context=".activities.DetailesActivity">
@@ -26,7 +27,7 @@
 
             <EditText
                 android:id="@+id/etCommentsDetailsId"
-                style="@style/CommentesText"
+                style="@style/CommentesTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/layoutTitleId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/colorPrimaryDark">
@@ -70,12 +72,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/comments"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/backGround" />
 
     <ListView
         android:id="@+id/listCommentsId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
         android:fadeScrollbars="true"
         android:fadingEdge="vertical" />
 </LinearLayout>

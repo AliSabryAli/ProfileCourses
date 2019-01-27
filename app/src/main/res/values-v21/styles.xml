@@ -32,7 +32,7 @@
         <!--<item name="android:background">@color/titleBg</item>-->
     </style>
 
-    <style name="CommentesText">
+    <style name="CommentesTitleText">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_gravity">center</item>
@@ -40,5 +40,11 @@
         <item name="android:layout_margin">20dp</item>
         <item name="android:textSize">20dp</item>
         <!--<item name="android:background">@color/titleBg</item>-->
+    </style>
+
+    <style name="CommentsTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
 </resources>

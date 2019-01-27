@@ -4,15 +4,20 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +29,8 @@ import com.ali.profilecourses.R;
 import com.ali.profilecourses.data.CourseData;
 import com.ali.profilecourses.model.Course;
 
+import java.util.ArrayList;
+
 public class DetailesActivity extends AppCompatActivity implements View.OnClickListener {
     private int courseId;
     private Course course;
@@ -33,8 +40,11 @@ public class DetailesActivity extends AppCompatActivity implements View.OnClickL
     private EditText etCommentText;
     private ListView commentsListView;
     private LinearLayout revealView;
+    private LinearLayout layoutTitle;
     private InputMethodManager inputMethodManager;
     private Boolean isTextVisible = false;
+    private ArrayList<String> comments;
+    private ArrayAdapter<String> arrayAdapter;
 
     final private String TAG = "Detailes Activity";
 
@@ -43,8 +53,16 @@ public class DetailesActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailes);
         setUpUi();
+        setUpAdapter();
         loadCourse();
+        getPhoto();
+    }
 
+
+    private void setUpAdapter() {
+        comments = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.comment_row, comments);
+        commentsListView.setAdapter(arrayAdapter);
     }
 
     private void loadCourse() {
@@ -65,8 +83,21 @@ public class DetailesActivity extends AppCompatActivity implements View.OnClickL
         etCommentText = findViewById(R.id.etCommentsDetailsId);
         commentsListView = findViewById(R.id.listCommentsId);
         revealView = findViewById(R.id.revealViewDetailsId);
+        layoutTitle = findViewById(R.id.layoutTitleId);
         btAddComment.setOnClickListener(this);
         revealView.setVisibility(View.INVISIBLE);
+
+    }
+
+    private void getPhoto() {
+        Bitmap photo = BitmapFactory.decodeResource(getResources(), course.getImgResource(this));
+        Palette palette = Palette.from(photo).generate();
+        colorize(palette);
+    }
+
+    private void colorize(Palette palette) {
+        getWindow().setBackgroundDrawable(new ColorDrawable(palette.getMutedColor(0)));
+        layoutTitle.setBackgroundColor(palette.getDarkMutedColor(0));
     }
 
     @Override
@@ -86,10 +117,16 @@ public class DetailesActivity extends AppCompatActivity implements View.OnClickL
                     inputMethodManager.showSoftInput(etCommentText, InputMethodManager.SHOW_IMPLICIT);
                 } else {
                     hideReveal(revealView);
+                    addNewComment(etCommentText.getText().toString().trim());
                     inputMethodManager.hideSoftInputFromWindow(etCommentText.getWindowToken(), 0);
                 }
                 break;
         }
+    }
+
+    private void addNewComment(String comment) {
+        comments.add(comment);
+        etCommentText.setText("");
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
